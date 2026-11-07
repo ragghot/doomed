@@ -238,14 +238,55 @@ h1 span,.step:hover,.mod,.rc.add{color:var(--acc2)}
 .uchip{margin-top:6px;font:600 11px Inter,system-ui,sans-serif;color:var(--mute);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:4px 10px;cursor:pointer}
 .uchip.on{color:var(--acc2);border-color:rgba(var(--acc-rgb),.5);background:rgba(var(--acc-rgb),.1)}
 .pl .g small.u{display:block;font-size:12px;font-family:Inter,system-ui,sans-serif;font-weight:600;color:var(--mute);letter-spacing:0;margin-top:2px}
+
+/* ===== LIQUID GLASS · Ciel & rose (thème clair) ===== */
+html.sky{--bg:#eef7fc;--panel:rgba(255,255,255,.62);--panel2:rgba(255,255,255,.78);--line:rgba(16,34,58,.10);--txt:#10223a;--mute:#5b6c83;
+  --sky:#00BEFE;--sky-rgb:0,190,254;--skyd:#0091cf;--pink:#F5CCCE;--pink-rgb:245,204,206;
+  --acc:#00BEFE;--acc2:#0091cf;--acc-rgb:0,190,254;--on-acc:#06243b;
+  --p:#1f6fe0;--g:#c47f00;--l:#df4b78;--ok:#15a34a;--warn:#d97706;--bad:#e0475b;--blur:saturate(185%) blur(24px);color-scheme:light}
+html.sky,html.sky body{background:#eef7fc;color:var(--txt)}
+html.sky body::before{background:
+  radial-gradient(52% 36% at 96% 0%,rgba(var(--sky-rgb),.62),transparent 70%),
+  radial-gradient(46% 34% at -4% 38%,rgba(var(--pink-rgb),1),transparent 72%),
+  radial-gradient(52% 40% at 92% 74%,rgba(var(--pink-rgb),.9),transparent 70%),
+  radial-gradient(48% 36% at 8% 104%,rgba(var(--sky-rgb),.38),transparent 70%),
+  radial-gradient(70% 50% at 50% 40%,rgba(255,255,255,.8),transparent 75%),
+  linear-gradient(180deg,#f1f9fe 0%,#fbf3f4 100%)}
+html.sky h1 span{background:linear-gradient(95deg,var(--sky),#e8909f);-webkit-background-clip:text;background-clip:text;color:transparent}
+html.sky .step:hover,html.sky .mod,html.sky .rc.add{color:var(--skyd)}
+html.sky .card,html.sky .scanbox{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(255,255,255,.5) 55%,rgba(255,255,255,.4));border:1px solid rgba(255,255,255,.92);
+  box-shadow:inset 0 1px 0 #fff,0 18px 40px -22px rgba(10,80,130,.42),0 2px 8px -3px rgba(10,80,130,.12)}
+html.sky .dd{background:rgba(255,255,255,.95);border-color:#fff;box-shadow:0 18px 40px -16px rgba(10,80,130,.45)}
+html.sky .dd button:hover,html.sky .dd button.hl{background:rgba(var(--sky-rgb),.12)}
+html.sky .kcalbox,html.sky .ratio,html.sky .food,html.sky .recipe,html.sky .rsteps,html.sky .ck,html.sky .score,html.sky .inp,html.sky select,html.sky .chip,html.sky .step,html.sky .ico,html.sky .btn.ghost,html.sky .rc,html.sky .uchip{
+  background:rgba(255,255,255,.62);border-color:rgba(255,255,255,.95);box-shadow:inset 0 1px 0 #fff,0 4px 12px -9px rgba(10,80,130,.4);color:var(--txt)}
+html.sky .inp:focus,html.sky select:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(var(--sky-rgb),.22)}
+html.sky .inp::placeholder{color:#97a5b7}
+html.sky .chip.on,html.sky .recipe.on{border-color:rgba(var(--sky-rgb),.7);background:linear-gradient(135deg,rgba(var(--sky-rgb),.3),rgba(var(--pink-rgb),.85));color:var(--txt)}
+html.sky .btn:not(.ghost){background:linear-gradient(115deg,var(--sky) 0%,#6fd8ff 48%,var(--pink) 100%);color:#06243b;box-shadow:0 14px 28px -12px rgba(0,150,210,.7),inset 0 1px 0 rgba(255,255,255,.75)}
+html.sky .btn.validate.done{background:rgba(255,255,255,.6);color:var(--ok);border:1px solid rgba(21,163,74,.35);box-shadow:none}
+html.sky .ico.on{color:var(--skyd);background:rgba(var(--sky-rgb),.14)}
+html.sky .ico:hover{border-color:rgba(var(--sky-rgb),.5)}
+html.sky .donut::after{background:#f6fbff}
+html.sky .toast{background:rgba(255,255,255,.9);color:var(--txt);border:1px solid #fff;box-shadow:0 14px 34px -12px rgba(10,80,130,.45)}
+html.sky .recipe ol,html.sky .rsteps ol,html.sky .hint{color:#33465f}
+html.sky .hint{background:rgba(217,119,6,.07);border-color:rgba(217,119,6,.25)}
+html.sky .tog input:checked+.sw::after,html.sky .ck.on .b{color:#fff}
+html.sky .tog input:checked+.sw::after{background:#fff}
+html.sky .rc.ok{border-color:rgba(21,163,74,.35)}
+html.sky .uchip.on{color:var(--skyd);border-color:rgba(var(--sky-rgb),.55);background:rgba(var(--sky-rgb),.12)}
+html.sky .scan{background:rgba(60,110,150,.3)}
 </style>
 <script>
 (function(){
   function hexRgb(h){h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.substr(i,2),16)).join(',');}
   function setAcc(a){ if(!a||!a[1]) return; const r=document.documentElement.style;
     r.setProperty('--acc',a[1]); r.setProperty('--acc2',a[2]||a[1]); r.setProperty('--acc-rgb',hexRgb(a[1])); }
+  function setTh(t){ const sky = t!=='night'; document.documentElement.classList.toggle('sky', sky);
+    const m=document.querySelector('meta[name=theme-color]'); if(m) m.setAttribute('content', sky?'#eef7fc':'#121316'); }
+  try{ setTh(localStorage.getItem('yd-theme')||'sky'); }catch(e){ setTh('sky'); }
   try{ setAcc(JSON.parse(localStorage.getItem('yd-accent'))); }catch(e){}
-  addEventListener('message',e=>{ if(e.data&&e.data.type==='yd-accent') setAcc(e.data.acc); });
+  addEventListener('message',e=>{ if(e.data&&e.data.type==='yd-accent'){ setAcc(e.data.acc); if(e.data.th) setTh(e.data.th); } });
 })();
 </script>
 </head>

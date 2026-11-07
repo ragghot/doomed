@@ -1,6 +1,6 @@
 // Cache hors ligne de You're Døomed
 // Change la version quand tu remplaces les fichiers, pour que l'iPhone prenne la mise à jour.
-const CACHE = "youre-doomed-v7";
+const CACHE = "youre-doomed-v8";
 const FILES = ["./", "./index.html", "./macro.html", "./zxing.min.js", "./ciqual.js", "./foods.js", "./manifest.webmanifest", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
